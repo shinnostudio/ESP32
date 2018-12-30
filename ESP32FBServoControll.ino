@@ -13,7 +13,7 @@
 #include <FirebaseESP32.h>
 #include <Adafruit_PWMServoDriver.h>
 
-//Wi-fi
+//Wi-Fi
 const char* ssid = "ssid here";
 const char* password = "password here";
 
@@ -25,27 +25,25 @@ const char* password = "password here";
 #define SERVOMIN  150
 #define SERVOMAX  600
 
-//Servo Pins
-#define SERVO_0_PORT 15
-
 // Fonts(SPIFF)
 ESP32_SPIFFS_ShinonomeFNT SFR;
 const char* UTF8SJIS_file         = "/Utf8Sjis.tbl";  // UTF8 Shift_JIS 変換テーブル
 const char* Shino_Zen_Font_file   = "/shnmk16.bdf";   // 全角フォント
 const char* Shino_Half_Font_file  = "/shnm8x16.bdf";  // 半角フォント
  
-// ESPr pins
-const uint8_t SCLK_OLED   = 14; // SCLK
-const uint8_t MOSI_OLED   = 13; // MOSI
-const uint8_t MISO_OLED   = 12; // MISO
-const uint8_t DC_OLED     = 26; // OLED DC
-const uint8_t RST_OLED    = 25; // OLED Reset
-const uint8_t CS1_OLED    = 15; // CS
-const uint8_t I2C_SDA     = 21; // CS
-const uint8_t I2C_SCL     = 22; // CS
-
-// Analog seosor inputs
+// Pin Setting
+const uint8_t SCLK_OLED   = 14; // SCLK (LCD)
+const uint8_t MOSI_OLED   = 13; // MOSI (LCD)
+const uint8_t MISO_OLED   = 12; // MISO (LCD)
+const uint8_t DC_OLED     = 26; // OLED DC (LCD)
+const uint8_t RST_OLED    = 25; // OLED Reset (LCD)
+const uint8_t CS1_OLED    = 15; // CS (LCD)
+const uint8_t I2C_SDA     = 21; // I2C SDA (Servo Driver)
+const uint8_t I2C_SCL     = 22; // I2C SCL (Servo Driver)
 // const uint8_t PRESSURE_SENSOR = 4;
+
+//Servo Driver Pin Setting
+#define SERVO_0_PORT 15
 
 // LCD params
 String    test_str;
@@ -62,7 +60,6 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
 // ESP32_SSD1331
 ESP32_SSD1331 ssd1331(SCLK_OLED, MISO_OLED, MOSI_OLED, CS1_OLED, DC_OLED, RST_OLED);
-
 
 void setup() {
   
@@ -109,7 +106,6 @@ void firebaseActivation() {
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
 }
 
- 
 void loop() {
 
   //String str = Firebase.getString("test");
