@@ -13,15 +13,15 @@
 #include <FirebaseESP32.h>
 #include <Adafruit_PWMServoDriver.h>
 
-//Wi-Fi
+// Wi-Fi
 const char* ssid = "ssid here";
 const char* password = "password here";
 
-//Firebase
+// Firebase
 #define FIREBASE_HOST "firebase-host"
 #define FIREBASE_AUTH "firebase-auth"
 
-//Servo pulse length
+// Servo pulse length
 #define SERVOMIN  150
 #define SERVOMAX  600
 
@@ -42,7 +42,7 @@ const uint8_t I2C_SDA     = 21; // I2C SDA (Servo Driver)
 const uint8_t I2C_SCL     = 22; // I2C SCL (Servo Driver)
 // const uint8_t PRESSURE_SENSOR = 4;
 
-//Servo Driver Pin Setting
+// Servo Driver Pin Setting
 #define SERVO_0_PORT 15
 
 // LCD params
